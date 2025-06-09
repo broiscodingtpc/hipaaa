@@ -1,0 +1,119 @@
+HIPAA-Compliant Call Center Web App — MVP Plan
+
+✨ Project Overview
+
+This application is designed to replace the Diagnotes/Backline platform, allowing a call center to manage end-of-shift reports, categorize patient calls, export data, and securely communicate with hospice clients. It must be HIPAA-compliant and optimized for mobile and desktop.
+
+🚀 MVP Features
+
+1. User Authentication & Roles
+
+Secure login (email + password or SSO)
+
+Roles:
+
+Admin
+
+Call Center Agent (Non-Clinical)
+
+Nurse (Clinical)
+
+Client Viewer (Hospice staff)
+
+2. Call Entry & Categorization
+
+Call log entry form:
+
+Select client (dropdown)
+
+Select call type (inbound/outbound)
+
+Patient initials or ID
+
+Free text summary
+
+Category selection (dropdown or multi-select): e.g. "Pain", "Refill", "Constipation"
+
+Timestamp
+
+Auto-assign user/author and role
+
+3. End-of-Shift Report Viewer
+
+Client-specific dashboard showing:
+
+Calls made per shift (chronological view)
+
+Filter by category/date/agent
+
+Export to CSV/Excel
+
+Search bar for keyword lookup
+
+4. Client Communication Chat Module (Optional in MVP)
+
+Chat per client
+
+Ability to post messages and file attachments
+
+Only visible to allowed users
+
+Display user role/tag (e.g. "RN", "Admin")
+
+5. Basic Admin Dashboard
+
+Manage clients (create/edit)
+
+Manage user access per client
+
+Manage categories (editable list)
+
+6. Security & HIPAA Features
+
+Encrypted data at rest and in transit (TLS/SSL)
+
+Audit log of user actions
+
+Role-based access to data
+
+Hosted on HIPAA-compliant infrastructure (Google Cloud w/ BAA or Aptible, etc.)
+
+📏 Database Structure (simplified)
+
+Users: id, name, email, password_hash, role, assigned_clients[]
+
+Clients: id, name, timezone, active
+
+Calls: id, client_id, user_id, patient_id, type (in/out), summary, category[], timestamp
+
+Messages: id, client_id, user_id, content, timestamp, attachments[]
+
+Categories: id, label
+
+AuditLog: id, user_id, action, timestamp
+
+📌 MVP Flow Summary
+
+Agent logs in
+
+Sees dashboard of clients they’re assigned to
+
+Selects a client → Enters new call log
+
+Nurse can view/edit their calls
+
+Client logs in next day → sees end-of-shift call log with filters and categories
+
+🌐 Tech Stack Recommendation
+
+Frontend: React + Tailwind
+
+Backend: Node.js + Express or Firebase
+
+Database: PostgreSQL or Firestore
+
+Auth: Firebase Auth / Clerk.dev (HIPAA compliant)
+
+Hosting: Google Cloud w/ BAA or Aptible (HIPAA-compliant PaaS)
+
+Wireframes and image examples will follow separately.
